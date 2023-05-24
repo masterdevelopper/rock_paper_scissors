@@ -1,0 +1,62 @@
+#   import
+import random
+
+#   variable
+paper = 1
+scissors = 2
+rock = 3
+pts_user = 0
+pts_computer = 0
+
+
+def play():
+    user_choice = int(input(print("1 - papier | 2 - ciseau | 3 - roche")))
+    computer_choice = random.randrange(1, 3)
+    global pts_user
+    global pts_computer
+    #   nul
+    if user_choice == computer_choice:
+        print("nul aucun pts")
+        return play()
+    #   gagner papier
+    if user_choice == 1 and computer_choice == 3:
+        print("plus 1 pts pour vous")
+        pts_user += 1
+        return play()
+    #   gagner ciseaux
+    if user_choice == 2 and computer_choice == 1:
+        print("plus 1 pts pour vous")
+        pts_user += 1
+        return play()
+    # gagner roche
+    if user_choice == 3 and computer_choice == 2:
+        print("plus 1 pts pour vous")
+        pts_user += 1
+        return play()
+    #   perdre papier
+    if user_choice == 1 and computer_choice == 2:
+        print("plus 1 pts pour l'ordi")
+        pts_computer += 1
+        return play()
+    #   perdre roche
+    if user_choice == 2 and computer_choice == 3:
+        print("plus 1 pts pour l'ordi")
+        pts_computer += 1
+        return play()
+    #   perdre papier
+    if user_choice == 3 and computer_choice == 1:
+        print("plus 1 pts pour l'ordi")
+        pts_computer += 1
+        return play()
+    #   gagner
+
+    if pts_user == 3:
+        print("vous avez gagnez", pts_user, "a", pts_computer)
+        
+    #   perdre
+
+    if pts_computer == 3:
+        print("vous avez perdu", pts_computer, "a", pts_user)
+
+
+print(play())
